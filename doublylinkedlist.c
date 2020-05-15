@@ -88,6 +88,21 @@ int deleteNode(struct Node *p,int pos){
    return x;
 }
 
+void reversedll(struct Node *p){
+    struct Node *temp;
+    //by swaping the links we can reverse easily
+    p=root;
+    while(p!=NULL){
+        temp=p->next;
+        p->next=p->prev;
+        p->prev=temp;
+        p=p->prev;
+
+        if(p!=NULL&&p->next==NULL)
+          root=p;
+    }
+}
+
 
 
 
@@ -120,6 +135,9 @@ int main(){
        scanf("%d",&pos);
      dele=deleteNode(root,pos); 
      printf("Deleted element is %d\n",dele);
+      display();
+    printf("\n");
+      reversedll(root);
       display();
 
 }
