@@ -50,30 +50,29 @@ void display(){
 }
 
 
-// int deleteNode(struct Node *p,int pos){
-//    int i;int x;
-//    struct Node *q;
-//    if(pos==0){
-//        q=head;
-//        head=head->next;
-//         x=q->data;
-//          free(q);
-//          if(head)
-//            head->prev=NULL;
-      
-//    }
-//    else{
-//        for(i=0;i<pos-1;i++){
-//            p=p->next;
-//        }
-//        if(p->next)
-//          p->next->prev=p->prev;
-//        p->prev->next=p->next;
-//        x=p->data;
-//        free(p);
-//    }
-//    return x;
-// }
+int deleteNode(struct Node *p,int pos){
+   int i;int x;
+   struct Node *q;
+   if(pos==0){
+       q=head;
+       head=head->next;
+       head->prev=q->prev;
+       head->prev->next=head;
+        x=q->data;
+         free(q);  
+   }
+   else{
+       for(i=0;i<pos-1;i++){
+           p=p->next;
+       }
+       if(p->next)
+         p->next->prev=p->prev;
+       p->prev->next=p->next;
+       x=p->data;
+       free(p);
+   }
+   return x;
+}
 
 // void reversedll(struct Node *p){
 //     struct Node *temp;
@@ -120,11 +119,11 @@ int main(){
     // }while(ch!=0);
      display();  
 
-    //  printf("\nEnter the positon at which element need to be deleted\n");
-    //    scanf("%d",&pos);
-    //  dele=deleteNode(head,pos); 
-    //  printf("Deleted element is %d\n",dele);
-    //   display();
+     printf("\nEnter the positon at which element need to be deleted\n");
+       scanf("%d",&pos);
+     dele=deleteNode(head,pos); 
+     printf("Deleted element is %d\n",dele);
+      display();
     // printf("\n");
     //   reversedll(head);
     //   display();
