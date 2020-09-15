@@ -24,5 +24,5 @@ void DFS(int ele){
 }
 
 void main(){
-    DFS(2);
+    DFS(1);
 }
